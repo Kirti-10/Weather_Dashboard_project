@@ -107,10 +107,79 @@ const Weather = () => {
                     <p className="font-semibold capitalize">{weatherData.description}</p>
                   </div>
                 </div>
+                <div className="bg-gray-700/30 p-4 rounded-lg">
+                  <h4 className="text-lg font-semibold mb-2">Agricultural Impact</h4>
+                  <p className="text-sm text-gray-300">
+                    Based on the current weather conditions, consider the following for your crops:
+                    {weatherData.temperature > 30 ? (
+                      " Ensure adequate irrigation to prevent heat stress."
+                    ) : weatherData.temperature < 10 ? (
+                      " Protect sensitive crops from cold damage."
+                    ) : (
+                      " Conditions are favorable for most crop activities."
+                    )}
+                    {weatherData.humidity > 80 ? (
+                      " High humidity may increase disease risk. Monitor crops closely."
+                    ) : weatherData.humidity < 30 ? (
+                      " Low humidity may increase water requirements."
+                    ) : (
+                      " Humidity levels are suitable for most crops."
+                    )}
+                  </p>
+                </div>
               </div>
             )}
           </div>
         </div>
+      </div>
+
+      {/* Animated agricultural weather background */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {[...Array(10)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute text-green-500 opacity-20 animate-float"
+            style={{
+              fontSize: Math.random() * 20 + 10 + 'px',
+              top: Math.random() * 100 + '%',
+              left: Math.random() * 100 + '%',
+              animationDuration: Math.random() * 10 + 10 + 's',
+              animationDelay: Math.random() * 5 + 's',
+            }}
+          >
+            🌱
+          </div>
+        ))}
+        {[...Array(10)].map((_, i) => (
+          <div
+            key={i + 10}
+            className="absolute text-yellow-500 opacity-20 animate-float"
+            style={{
+              fontSize: Math.random() * 20 + 10 + 'px',
+              top: Math.random() * 100 + '%',
+              left: Math.random() * 100 + '%',
+              animationDuration: Math.random() * 10 + 10 + 's',
+              animationDelay: Math.random() * 5 + 's',
+            }}
+          >
+            ☀️
+          </div>
+        ))}
+        {[...Array(10)].map((_, i) => (
+          <div
+            key={i + 20}
+            className="absolute text-blue-500 opacity-20 animate-float"
+            style={{
+              fontSize: Math.random() * 20 + 10 + 'px',
+              top: Math.random() * 100 + '%',
+              left: Math.random() * 100 + '%',
+              animationDuration: Math.random() * 10 + 10 + 's',
+              animationDelay: Math.random() * 5 + 's',
+            }}
+          >
+            💧
+          </div>
+        ))}
       </div>
     </div>
   );
